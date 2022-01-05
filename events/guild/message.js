@@ -3,7 +3,10 @@ const profileModel = require("../../models/profileSchema");
 
 module.exports = async (Discord, client, message) => {
     const prefix = process.env.PREFIX;
-    const admin = ["add", "edit", "delete"];
+    const restricted = ["add", "edit", "delete"];
+
+    let admin = message.member.permissions.has('ADMINISTRATOR');
+    console.log(admin)
 
     /* let role = message.guild.roles.cache.find(r => r.name === "Scroll Keeper");
     console.log(role);
@@ -34,8 +37,9 @@ module.exports = async (Discord, client, message) => {
 
     const command = client.commands.get(cmd);
 
-    if (!message.member.roles.cache.some(r => r.name == "Scroll Keeper") && command.name && admin.includes(command.name))
-        return message.channel.send(`Must have *Scroll Keeper* role to use '-${command.name}' command!`)
+    if (!admin && !message.member.roles.cache.some(r => r.name == "Scroll Keeper") && 
+        command.name && restricted.includes(command.name))
+        return message.channel.send(`Must have *Scroll Keeper* role to use '-${command.name}' command! yomama`)
 
     if (command) command.execute(client, message, args, Discord, profileData);
 }
