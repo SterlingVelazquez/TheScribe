@@ -3,7 +3,7 @@ module.exports = {
     name: 'define',
     description: 'Define word in glossary',
     async execute(client, message, args, Discord, profileData) {
-        var args = args.join(" ");
+        var args = await args.join(" ");
 
         if (!args) return message.channel.send('Incorrect input! How to use the -define command: \n-define <word> "<definition>"')
         if (!profileData) return message.channel.send('Entry does not exist in the dictionary!')

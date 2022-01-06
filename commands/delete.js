@@ -3,7 +3,7 @@ module.exports = {
     name: 'delete',
     description: 'Delete word in glossary',
     async execute(client, message, args, Discord, profileData) {
-        var args = args.join(" ");
+        var args = await args.join(" ");
         const wrongInput = 'Incorrect input! How to use the -delete command: \n-delete <word> "<definition>"'
 
         if (!args) return message.channel.send(wrongInput)

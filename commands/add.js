@@ -3,9 +3,9 @@ module.exports = {
     name: 'add',
     description: 'Add word to the glossary',
     async execute(client, message, args, Discord, profileData) {
-        var args = args.join(" ");
-        var name = args.slice(0, args.indexOf(`"`)).trim();
-        var def = args.slice(args.indexOf(`"`) + 1, args.lastIndexOf(`"`)).trim();
+        var args = await args.join(" ");
+        var name = await args.slice(0, args.indexOf(`"`)).trim();
+        var def = await args.slice(args.indexOf(`"`) + 1, args.lastIndexOf(`"`)).trim();
         const wrongInput = 'Incorrect input! How to use the -add command: \n-add <word> "<definition>"'
 
         if (!name || !def || (name === def)) return message.channel.send(wrongInput)

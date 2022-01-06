@@ -6,7 +6,6 @@ module.exports = async (Discord, client, message) => {
     const restricted = ["add", "edit", "delete"];
 
     let admin = message.member.permissions.has('ADMINISTRATOR');
-    console.log(admin)
 
     /* let role = message.guild.roles.cache.find(r => r.name === "Scroll Keeper");
     console.log(role);

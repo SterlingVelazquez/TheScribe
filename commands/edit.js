@@ -3,9 +3,9 @@ module.exports = {
     name: 'edit',
     description: 'Edit word in glossary',
     async execute(client, message, args, Discord, profileData) {
-        var args = args.join(" ");
-        var name = args.slice(0, args.indexOf(`"`)).trim();
-        var def = args.slice(args.indexOf(`"`) + 1, args.lastIndexOf(`"`)).trim();
+        var args = await args.join(" ");
+        var name = await args.slice(0, args.indexOf(`"`)).trim();
+        var def = await args.slice(args.indexOf(`"`) + 1, args.lastIndexOf(`"`)).trim();
         const wrongInput = 'Incorrect input! How to use the -edit command: \n-edit <word> "<definition>"'
 
         if (!name || !def || (name === def)) return message.channel.send(wrongInput)
