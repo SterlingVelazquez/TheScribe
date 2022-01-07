@@ -8,7 +8,7 @@ module.exports = {
         var def = await args.slice(args.indexOf(`"`) + 1, args.lastIndexOf(`"`)).trim();
         const wrongInput = 'Incorrect input! How to use the -add command: \n-add <word> "<definition>"'
 
-        if (!name || !def || (name === def)) return message.channel.send(wrongInput)
+        if (!name || !def || !args.includes(`"`)) return message.channel.send(wrongInput)
         else if (!(/^[a-zA-Z0-9-&!?/()',: ]+$/.test(name))) 
             return message.channel.send("Only the following special characters are allowed in words: & ! ? / ( ) , : -");
 
